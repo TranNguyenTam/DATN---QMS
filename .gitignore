@@ -57,7 +57,6 @@ env/
 .ipynb_checkpoints/
 
 # ML artifacts (heavy + reproducible từ training)
-ml-wait-time/data/
 ml-wait-time/artifacts/*.pkl
 ml-wait-time/artifacts/*.joblib
 ml-wait-time/artifacts/report.json
@@ -66,6 +65,9 @@ ml-wait-time/artifacts/report.json
 ai-face/models/*.caffemodel
 ai-face/models/*.prototxt
 ai-face/.deepface/
+
+# Face test data (ảnh khuôn mặt thật — không commit)
+ai-face/data/
 
 # ─── DB build pipeline (raw extracts từ DB cũ — chứa SP source) ──
 database/setup/_raw/
