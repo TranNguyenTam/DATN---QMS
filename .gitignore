@@ -107,7 +107,7 @@ frontend/dist/
 .coverage
 coverage/
 
-# ─── Stored Procedures (không public — business logic nội bộ) ────
+# ─── Stored Procedures ────
 database/setup/07_sp_001_users.sql
 database/setup/08_sp_002_hangdoiphongban.sql
 database/setup/09_sp_003_danhmuc.sql
@@ -117,11 +117,7 @@ database/setup/12_sp_006.sql
 database/setup/13_sp_k004.sql
 database/setup/14_sp_cntt001.sql
 
-# ─── Tài liệu nội bộ / kịch bản bảo vệ ─────────────────────────
-docs/BaoCao_DATN_TranNguyenTam_v2.docx
-docs/KICH_BAN_BAO_VE.md
-docs/KICH_BAN_100_CAU.md
-docs/NGAN_HANG_CAU_HOI.md
+# ─── Tài liệu nội bộ  ─────────────────────────
 docs/scan-me.html
 docs/scan-domain.html
 docs/scan-tunnel.html
