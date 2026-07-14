@@ -1,0 +1,11 @@
+.tivi-logout-btn{
+  position: fixed;
+  top: 2.5vh;
+  right: 2vw;
+  z-index: 9999;
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 1;
+  }
+}

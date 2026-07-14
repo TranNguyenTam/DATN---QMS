@@ -1,0 +1,87 @@
+name: qms-final
+
+# Gom 4 service + 1 nginx SPA. DB SQL Server external — set qua .env file
+# (xem .env.example). Mặc định trỏ vào QMS_DA local trên host.
+#
+# Cổng public:
+#   3000  frontend (Nginx SPA + reverse proxy /api và /ws về backend)
+#   5000  backend ASP.NET Core (có thể ẩn khỏi internet, FE proxy qua)
+#   5010  ai-face (internal, backend gọi qua docker network)
+#   5011  ml-wait-time (internal, backend gọi qua docker network)
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: qms-backend
+    ports:
+      - "5000:5000"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=${QMS_DB_CONN:-Server=host.docker.internal,1433;Database=QMS_DA;User Id=qms_app;Password=CHANGE_ME;TrustServerCertificate=True;}
+      - FaceAi__BaseUrl=http://ai-face:5010
+      # Shared secret để gọi service ai-face (phải khớp FACE_INTERNAL_TOKEN bên dưới).
+      - FaceAi__InternalToken=${FACE_INTERNAL_TOKEN:?Set FACE_INTERNAL_TOKEN in .env}
+      # Khóa mã hóa embedding (ĐẶT) — 64 hex chars AES-256). Override qua .env.
+      - Face__EncryptionKey=${FACE_ENCRYPTION_KEY:?Set FACE_ENCRYPTION_KEY in .env}
+      - Face__CosineThreshold=${FACE_COSINE_THRESHOLD:-0.62}
+      - Face__Margin=${FACE_MARGIN:-0.06}
+      - WaitTimeMl__BaseUrl=http://ml-wait-time:5011
+      - Jwt__Secret=${JWT_SECRET:-CHANGE_ME_64_CHARS_RANDOM_SECRET_FOR_JWT_HMAC_SHA256_SIGNING_ALGORITHM}
+      - Jwt__Issuer=QMS
+      - Jwt__Audience=QMS
+    depends_on:
+      - ai-face
+      - ml-wait-time
+    networks: [qms]
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: qms-frontend
+    ports:
+      - "3000:80"
+    depends_on: [backend]
+    networks: [qms]
+    restart: unless-stopped
+
+  ai-face:
+    build:
+      context: ./ai-face
+      dockerfile: Dockerfile
+    container_name: qms-ai-face
+    environment:
+      - FACE_MODEL=Facenet512
+      - FACE_DETECTOR=ssd
+      - FACE_COSINE_THRESHOLD=${FACE_COSINE_THRESHOLD:-0.62}
+      - FACE_MATCH_MARGIN=${FACE_MARGIN:-0.06}
+      # Bắt buộc backend gửi đúng X-Internal-Token mới gọi được /embed, /camera/*.
+      - FACE_INTERNAL_TOKEN=${FACE_INTERNAL_TOKEN:?Set FACE_INTERNAL_TOKEN in .env}
+      # Liveness/anti-spoofing: bật "true" nếu đã cài torch + model (mặc định off cho demo mượt).
+      - FACE_ANTI_SPOOFING=${FACE_ANTI_SPOOFING:-false}
+    volumes:
+      - ai_face_weights:/root/.deepface
+    networks: [qms]
+    restart: unless-stopped
+
+  ml-wait-time:
+    build:
+      context: ./ml-wait-time
+      dockerfile: Dockerfile
+    container_name: qms-ml-wait-time
+    environment:
+      - WAIT_ARTIFACTS=/app/artifacts
+    volumes:
+      - ./ml-wait-time/artifacts:/app/artifacts:ro
+    networks: [qms]
+    restart: unless-stopped
+
+networks:
+  qms:
+    driver: bridge
+
+volumes:
+  ai_face_weights:

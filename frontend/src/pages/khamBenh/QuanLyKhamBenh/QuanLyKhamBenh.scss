@@ -1,0 +1,17 @@
+.kham-benh-wrapper {
+  height: calc(100vh - 64px);
+  padding: 12px;
+  background-color: #f0f4f8;
+
+  .left-panel-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}

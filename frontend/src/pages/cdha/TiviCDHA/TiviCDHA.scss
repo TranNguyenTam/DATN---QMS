@@ -1,0 +1,188 @@
+#tivi-cdha {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Inter", sans-serif;
+  background: #f0f7ff;
+  overflow: hidden;
+
+  /* Variables */
+  $text-orange: #e85d04;
+  $text-blue: #003a8c;
+  $accent: #1677ff;
+  $card-border: rgba(22, 119, 255, 0.25);
+
+  .fullscreen-btn {
+    position: fixed;
+    top: 2vh;
+    right: 2vw;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  /* ================= BODY LAYOUT (92vh) ================= */
+  .tivi-body {
+    flex: 1;
+    height: 92vh;
+    display: flex;
+    width: 100vw;
+
+    /* --- Left Panel (38%) --- */
+    .left-panel {
+      width: 38vw;
+      height: 100%;
+    }
+
+    /* --- Right Panel (62%) --- */
+    .right-panel {
+      width: 62vw;
+      position: relative;
+      background: linear-gradient(180deg, #f4f9ff 0%, #eaf2ff 100%);
+      display: flex;
+      flex-direction: column;
+      padding: 2.5vh 3vw 2vh;
+      box-sizing: border-box;
+      gap: 1.5vh;
+
+      .current-number-section {
+        flex: 6;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5vh;
+
+        .room-title {
+          text-align: center;
+          color: $text-blue;
+          font-size: 4.2vh;
+          font-weight: 800;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          padding-bottom: 1.2vh;
+          position: relative;
+
+          &::after {
+            content: "";
+            display: block;
+            width: 6vw;
+            height: 4px;
+            background: $accent;
+            border-radius: 2px;
+            margin: 0.8vh auto 0;
+          }
+        }
+
+        .big-info-card {
+          flex: 1;
+          border: none;
+          border-radius: 2.5vh;
+          background: white;
+          box-shadow:
+            0 0 0 2px $card-border,
+            0 1vh 3vh rgba(22, 119, 255, 0.1),
+            0 0.5vh 1vh rgba(0, 0, 0, 0.06);
+          overflow: hidden;
+          position: relative;
+
+          // Top accent strip
+          &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, $accent, #36cfc9);
+          }
+
+          .ant-card-body {
+            padding: 2vh;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .stt-number {
+            color: $text-orange;
+            font-size: 22vh;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 1.5vh;
+            text-shadow: 0 0.3vh 1.5vh rgba(232, 93, 4, 0.25);
+            font-variant-numeric: tabular-nums;
+            animation: tivi-stt-pulse-cdha 2s ease-in-out infinite;
+          }
+
+          @keyframes tivi-stt-pulse-cdha {
+            0%, 100% { text-shadow: 0 0.3vh 1.5vh rgba(232, 93, 4, 0.25); transform: scale(1); }
+            50%      { text-shadow: 0 0.3vh 3vh rgba(232, 93, 4, 0.45);   transform: scale(1.02); }
+          }
+
+          .patient-name {
+            color: $accent;
+            font-size: 4.5vh;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            text-align: center;
+          }
+        }
+      }
+
+      .waiting-header {
+        font-size: 2.6vh;
+        font-weight: 700;
+        color: white;
+        background: linear-gradient(90deg, $text-blue, $accent);
+        text-align: center;
+        padding: 0.8vh 0;
+        border-radius: 1vh;
+        letter-spacing: 0.12em;
+        flex-shrink: 0;
+      }
+
+      .waiting-section-vertical {
+        flex: 4;
+        background: white;
+        border: 2px solid rgba(22, 119, 255, 0.15);
+        border-radius: 1.5vh;
+        display: flex;
+        flex-direction: column;
+        padding: 1.5vh 2.5vw;
+        overflow: hidden;
+        box-shadow: 0 0.3vh 1vh rgba(0, 0, 0, 0.05);
+
+        .waiting-list-container {
+          flex: 1;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0.8vh;
+
+          .waiting-item {
+            font-size: 4.4vh;
+            font-weight: 700;
+            color: $text-blue;
+            text-align: center;
+            padding: 0.5vh 0;
+            border-radius: 0.8vh;
+            background: rgba(22, 119, 255, 0.04);
+            font-variant-numeric: tabular-nums;
+
+            &:not(:last-child) {
+              border-bottom: 1px solid rgba(22, 119, 255, 0.1);
+            }
+          }
+        }
+      }
+    }
+  }
+}

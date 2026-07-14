@@ -1,0 +1,39 @@
+.kiosk-keyboard {
+  background: #2d5878;
+  padding: 1rem;
+  border-radius: 10px;
+  width: 260px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+
+  button {
+    height: 50px;
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .danger {
+    background: #e74c3c !important;
+    color: white;
+  }
+
+  /* Thoát chiếm 2 hàng */
+  .exit {
+    grid-row: span 2;
+    height: 108px !important;
+  }
+
+  /* 0 chiếm 2 cột */
+  .zero {
+    grid-column: span 2;
+  }
+
+  /* Enter chiếm 2 cột */
+  .enter {
+    grid-column: span 2;
+  }
+}

@@ -1,0 +1,133 @@
+# ════════════════════════════════════════════════════════════════
+# QMS đồ án — .gitignore
+# ════════════════════════════════════════════════════════════════
+
+# ─── Secrets (NEVER commit) ──────────────────────────────────────
+.env
+.env.local
+.env.*.local
+*.env
+!.env.example
+!frontend/.env.example
+appsettings.Development.json
+appsettings.Production.json
+appsettings.local.json
+appsettings.*.local.json
+*.pfx
+*.key
+secrets.json
+
+# ─── .NET (backend) ──────────────────────────────────────────────
+**/bin/
+**/obj/
+*.user
+*.suo
+*.userprefs
+*.swp
+.vs/
+backend/*.sln.docstates
+TestResults/
+build_log.txt
+
+# ─── Node (frontend) ─────────────────────────────────────────────
+node_modules/
+dist/
+build/
+dist-ssr/
+.npm/
+.vite/
+*.local
+.eslintcache
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ─── Python (ai-face, ml-wait-time) ──────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+.ipynb_checkpoints/
+
+# ML artifacts (heavy + reproducible từ training)
+ml-wait-time/data/
+ml-wait-time/artifacts/*.pkl
+ml-wait-time/artifacts/*.joblib
+ml-wait-time/artifacts/report.json
+
+# Face models (auto-download lúc startup)
+ai-face/models/*.caffemodel
+ai-face/models/*.prototxt
+ai-face/.deepface/
+
+# ─── DB build pipeline (raw extracts từ DB cũ — chứa SP source) ──
+database/setup/_raw/
+database/setup/_scripts/__pycache__/
+
+# ─── IDE ─────────────────────────────────────────────────────────
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.cursor/
+
+# ─── OS ──────────────────────────────────────────────────────────
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+.Spotlight-V100
+.Trashes
+
+# ─── Logs ────────────────────────────────────────────────────────
+*.log
+logs/
+log/
+
+# ─── PWA build output ────────────────────────────────────────────
+frontend/dev-dist/
+frontend/dist/
+
+# ─── Tài liệu cá nhân (giữ trong local) ──────────────────────────
+*.docx
+*.doc
+102220124_TranNguyenTam_*.pdf
+
+# ─── Misc ────────────────────────────────────────────────────────
+*.bak
+*.tmp
+*.cache
+.coverage
+coverage/
+
+# ─── Stored Procedures (không public — business logic nội bộ) ────
+database/setup/07_sp_001_users.sql
+database/setup/08_sp_002_hangdoiphongban.sql
+database/setup/09_sp_003_danhmuc.sql
+database/setup/10_sp_004_hangdoitiepnhan.sql
+database/setup/11_sp_k002.sql
+database/setup/12_sp_006.sql
+database/setup/13_sp_k004.sql
+database/setup/14_sp_cntt001.sql
+
+# ─── Tài liệu nội bộ / kịch bản bảo vệ ─────────────────────────
+docs/BaoCao_DATN_TranNguyenTam_v2.docx
+docs/KICH_BAN_BAO_VE.md
+docs/KICH_BAN_100_CAU.md
+docs/NGAN_HANG_CAU_HOI.md
+docs/scan-me.html
+docs/scan-domain.html
+docs/scan-tunnel.html
+docs/slide_v7_text.txt
+docs/*.pptx
+docs/*.pdf
+
+# ─── Demo QR images ──────────────────────────────────────────────
+docs/img/

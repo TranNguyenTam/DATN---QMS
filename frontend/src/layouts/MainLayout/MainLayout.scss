@@ -1,0 +1,276 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+// Variables
+$primary-color: #1677ff;
+$header-bg: #ffffff;
+$layout-bg: #f0f4f8;
+$text-color: #1a2332;
+$sidebar-bg: #0d1b2e;
+$sidebar-item-bg: #132238;
+$logo-height: 64px;
+$shadow-header:
+  0 1px 0 #f0f0f0,
+  0 2px 12px rgba(0, 0, 0, 0.04);
+
+.main-layout {
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+
+  .ant-layout-sider {
+    background: $sidebar-bg;
+    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+
+    .ant-layout-sider-children {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .sidebar-logo {
+      height: $logo-height;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      background: rgba(22, 119, 255, 0.12);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      margin-bottom: 4px;
+      overflow: hidden;
+      transition: all 0.3s;
+      white-space: nowrap;
+      flex-shrink: 0;
+
+      &.collapsed {
+        padding: 0 8px;
+        justify-content: center;
+        .sidebar-logo__text {
+          opacity: 0;
+          width: 0;
+          overflow: hidden;
+        }
+      }
+
+      .ant-image {
+        display: flex;
+        align-items: center;
+      }
+
+      &__text {
+        color: #fff;
+        font-weight: 700;
+        font-size: 15px;
+        margin-left: 10px;
+        opacity: 1;
+        transition:
+          opacity 0.3s,
+          width 0.3s;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0.7));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+    }
+
+    // Trigger button (collapse toggle)
+    .ant-layout-sider-trigger {
+      background: rgba(255, 255, 255, 0.05);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      color: rgba(255, 255, 255, 0.45);
+      transition: all 0.2s;
+
+      &:hover {
+        background: rgba(22, 119, 255, 0.15);
+        color: #fff;
+      }
+    }
+  }
+
+  .site-layout {
+    background: $layout-bg;
+    transition: all 0.2s;
+
+    .site-layout-header {
+      background: $header-bg;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: $shadow-header;
+      z-index: 9;
+      height: $logo-height;
+      position: sticky;
+      top: 0;
+
+      .header-title {
+        font-size: 17px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        color: $primary-color;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        .ant-typography {
+          color: $primary-color !important;
+          font-size: 17px !important;
+          letter-spacing: 0.5px;
+        }
+      }
+
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        .header-divider {
+          width: 1px;
+          height: 28px;
+          background: #edf2f7;
+        }
+
+        // Socket status pill
+        .socket-status {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          padding: 4px 12px;
+          border-radius: 20px;
+          font-size: 12px;
+          font-weight: 600;
+          letter-spacing: 0.2px;
+          cursor: default;
+          transition: all 0.3s;
+
+          .status-icon {
+            font-size: 13px;
+          }
+
+          .status-label {
+            line-height: 1;
+          }
+
+          &.online {
+            background: #f6ffed;
+            color: #389e0d;
+            border: 1px solid #b7eb8f;
+
+            .status-icon {
+              color: #52c41a;
+            }
+          }
+
+          &.offline {
+            background: #fff2f0;
+            color: #cf1322;
+            border: 1px solid #ffccc7;
+
+            .status-icon {
+              color: #ff4d4f;
+            }
+          }
+        }
+
+        .reconnect-btn {
+          font-size: 12px;
+          height: 28px;
+          padding: 0 10px;
+          border-radius: 6px;
+        }
+
+        // User info block
+        .user-info {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 6px 12px;
+          border-radius: 10px;
+          background: #f8fafc;
+          border: 1px solid #edf2f7;
+          cursor: default;
+          transition: all 0.2s;
+
+          &:hover {
+            background: #eff6ff;
+            border-color: #bfdbfe;
+          }
+
+          .user-avatar {
+            background: linear-gradient(135deg, $primary-color, #0958d9);
+            flex-shrink: 0;
+          }
+
+          .user-details {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+            gap: 3px;
+
+            .user-name {
+              font-size: 13px;
+              font-weight: 600;
+              color: $text-color;
+            }
+
+            .user-dept {
+              font-size: 11px;
+              color: #94a3b8;
+              display: flex;
+              align-items: center;
+              gap: 3px;
+            }
+          }
+        }
+
+        .logout-btn-1 {
+          border-radius: 8px;
+          height: 36px;
+          padding: 0 14px;
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          font-weight: 500;
+          font-size: 13px;
+          color: #ef4444;
+          border: 1px solid transparent;
+          transition: all 0.2s;
+
+          &:hover {
+            background-color: #fff1f0;
+            border-color: #fca5a5;
+            color: #dc2626;
+          }
+        }
+      }
+    }
+
+    .site-layout-footer {
+      text-align: center;
+      color: rgba(0, 0, 0, 0.45);
+      padding: 16px 50px;
+      background: transparent;
+    }
+  }
+}
+
+// --- Bảng trong nội dung trang: KHÔNG nhảy dòng + tự cuộn ngang khi khung hẹp ---
+// Khi menu mở rộng, content hẹp lại làm AntD bóp cột → chữ xuống dòng xấu
+// (header cao 3 dòng, tên BN ngắt dòng). Cho cell giữ 1 dòng và để bảng tự cuộn
+// ngang nếu rộng hơn khung → tỉ lệ cột ổn định dù menu mở hay thu gọn.
+.site-layout-content {
+  .ant-table-content {
+    overflow-x: auto;
+  }
+
+  .ant-table-thead > tr > th,
+  .ant-table-tbody > tr > td {
+    white-space: nowrap;
+  }
+}

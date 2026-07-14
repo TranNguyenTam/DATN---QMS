@@ -1,0 +1,46 @@
+.quay-tiep-nhan-wrapper {
+  height: calc(100vh - 64px);
+  overflow: hidden;
+  padding: 12px;
+  background-color: #f0f4f8;
+
+  // --- CỘT TRÁI (Flex Container) ---
+  .left-panel-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    // Giữ chiều cao tự nhiên của từng thẻ, KHÔNG co lại — nếu thiếu chỗ thì
+    // cột trái tự cuộn, tránh .call-card (overflow:hidden) cắt mất nút "GỌI SỐ".
+    > * {
+      flex-shrink: 0;
+    }
+  }
+
+  // Config selects (Quầy / Hàng đợi)
+  .config-card {
+    .config-row {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 10px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .config-label {
+        font-size: 11px;
+        font-weight: 600;
+        color: #64748b;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+      }
+    }
+  }
+}

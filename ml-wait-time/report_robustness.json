@@ -1,0 +1,37 @@
+{
+  "operational": {
+    "n": 60,
+    "MAE": 9.9,
+    "MAE_CI95": [
+      7.65,
+      12.38
+    ],
+    "RMSE": 13.57,
+    "RMSE_CI95": [
+      10.36,
+      16.77
+    ],
+    "median_abs_err": 7.35
+  },
+  "kfold": {
+    "model": "xgboost",
+    "scheme": "TimeSeriesSplit (temporal forward-chaining)",
+    "folds": 5,
+    "fold_MAEs": [
+      9.257,
+      9.875,
+      9.274,
+      9.27,
+      9.621
+    ],
+    "mean_MAE": 9.459,
+    "std_MAE": 0.278,
+    "test_MAE": 9.459,
+    "test_MAE_CI95": [
+      9.3,
+      9.621
+    ],
+    "n_test_covered": 16670,
+    "n": 20004
+  }
+}

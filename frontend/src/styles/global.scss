@@ -1,0 +1,191 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+// ============================================================
+// GLOBAL STYLES - QMS Hospital System
+// Màu/spacing/radius lấy từ Design System tokens (styles/tokens.scss
+// → var(--color-*)). Phần lớn style AntD đã chuyển sang ConfigProvider
+// theme (config/antdTheme.js); ở đây chỉ giữ các tinh chỉnh theme chưa
+// phủ (typography nhỏ, padding bảng, scrollbar, layout helper).
+// ============================================================
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+// ============================================================
+// ANT DESIGN — tinh chỉnh nhỏ (radius/màu chính do theme lo)
+// ============================================================
+
+// Card head typography (theme lo radius/border/shadow)
+.ant-card {
+  .ant-card-head {
+    border-bottom-color: var(--color-border);
+    min-height: 44px;
+
+    .ant-card-head-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-text);
+    }
+  }
+}
+
+// Buttons — KHÔNG ép màu primary nữa (để theme + ghost/variant hoạt động đúng).
+.ant-btn {
+  font-size: 13px;
+}
+
+// Inputs — focus ring (radius/border do theme lo)
+.ant-input,
+.ant-input-affix-wrapper,
+.ant-select:not(.ant-select-customize-input) .ant-select-selector,
+.ant-picker {
+  transition: all 0.2s;
+
+  &:focus,
+  &.ant-input-affix-wrapper-focused,
+  &.ant-select-focused .ant-select-selector {
+    box-shadow: 0 0 0 3px rgba(22, 119, 255, 0.1);
+  }
+}
+
+// Tables — padding/typography (header bg/màu do theme lo)
+.ant-table {
+  font-size: 13px;
+
+  .ant-table-thead > tr > th {
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    border-bottom: 2px solid var(--color-border);
+  }
+
+  .ant-table-tbody > tr > td {
+    border-bottom-color: var(--color-border);
+  }
+}
+
+// Select option selected
+.ant-select-item-option-selected {
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+// Message / Notification
+.ant-message-notice-content {
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+// ============================================================
+// CUSTOM SCROLLBAR
+// ============================================================
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border-radius: 3px;
+
+  &:hover {
+    background: var(--color-text-muted);
+  }
+}
+
+// ============================================================
+// LAYOUT HELPERS - shared wrapper classes
+// ============================================================
+
+// Common page wrappers (Queue pages)
+.kham-benh-wrapper,
+.quay-tiep-nhan-wrapper {
+  height: calc(100vh - 64px);
+  overflow: hidden;
+  padding: var(--space-3);
+  background-color: var(--color-bg);
+
+  .left-panel-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+// Config card inside left panels
+.config-card {
+  border-radius: 12px;
+  border-color: var(--color-border);
+
+  .ant-card-body {
+    padding: 12px 14px;
+  }
+
+  .ant-card-head {
+    min-height: 40px;
+    padding: 0 14px;
+
+    .ant-card-head-title {
+      padding: 8px 0;
+      font-size: 13px;
+    }
+  }
+}
+
+// Config row label
+.config-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 4px;
+}
+
+// ============================================================
+// UTILITY
+// ============================================================
+.text-primary {
+  color: var(--color-primary) !important;
+}
+.text-success {
+  color: var(--color-success) !important;
+}
+.text-danger {
+  color: var(--color-error) !important;
+}
+.text-warning {
+  color: var(--color-warning) !important;
+}
+.text-muted {
+  color: var(--color-text-muted) !important;
+}

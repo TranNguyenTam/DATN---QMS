@@ -1,0 +1,72 @@
+{
+  "n_total": 177,
+  "n_train": 141,
+  "n_test": 36,
+  "split": "temporal",
+  "models": {
+    "linear": {
+      "MAE": 85.84,
+      "RMSE": 112.92,
+      "MAPE": 264.69,
+      "over10minPct": 91.67,
+      "P50": 64.91,
+      "P90": 173.38,
+      "n": 36
+    },
+    "random_forest": {
+      "MAE": 113.59,
+      "RMSE": 146.78,
+      "MAPE": 292.08,
+      "over10minPct": 100.0,
+      "P50": 79.06,
+      "P90": 265.02,
+      "n": 36
+    },
+    "xgboost": {
+      "MAE": 132.92,
+      "RMSE": 172.55,
+      "MAPE": 303.72,
+      "over10minPct": 94.44,
+      "P50": 99.21,
+      "P90": 324.01,
+      "n": 36
+    }
+  },
+  "baselines": {
+    "mean": {
+      "MAE": 90.62,
+      "RMSE": 113.55,
+      "MAPE": 247.55,
+      "over10minPct": 97.22,
+      "P50": 80.39,
+      "P90": 177.0,
+      "n": 36
+    },
+    "by_hour": {
+      "MAE": 107.68,
+      "RMSE": 138.64,
+      "MAPE": 245.13,
+      "over10minPct": 94.44,
+      "P50": 85.11,
+      "P90": 272.89,
+      "n": 36
+    },
+    "queueLen_rule": {
+      "MAE": 90.62,
+      "RMSE": 113.55,
+      "MAPE": 247.55,
+      "over10minPct": 97.22,
+      "P50": 80.39,
+      "P90": 177.0,
+      "n": 36
+    }
+  },
+  "feature_importance": {
+    "hourOfDay": 0.3541,
+    "dayOfWeek": 0.3509,
+    "priorityLevel": 0.2949,
+    "queueLen": 0.0
+  },
+  "best_model": "xgboost",
+  "skill_score_vs_best_baseline_pct": -46.7
+}

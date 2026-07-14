@@ -1,0 +1,99 @@
+.tivi-footer {
+  height: 8vh;
+  background: linear-gradient(90deg, #0d1b2e 0%, #003a8c 100%);
+  display: flex;
+  align-items: stretch;
+  color: white;
+  font-size: 3.8vh;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+  border-top: 2px solid rgba(22, 119, 255, 0.4);
+  flex-shrink: 0;
+
+  .time-box {
+    min-width: 16vw;
+    padding: 0 2vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.2);
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.05em;
+  }
+
+  .status-box {
+    min-width: 26vw;
+    max-width: 34vw;
+    padding: 0 1.2vw;
+    display: flex;
+    align-items: center;
+    gap: 0.7vw;
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+    font-size: 2.5vh;
+
+    .status-dot {
+      width: 1.5vh;
+      height: 1.5vh;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .status-label {
+      font-size: 2.7vh;
+      font-weight: 700;
+      min-width: 4.6vw;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .status-device {
+      font-size: 2.2vh;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      opacity: 0.92;
+    }
+
+    &.online {
+      .status-dot {
+        background: #52c41a;
+        box-shadow: 0 0 0.8vh rgba(82, 196, 26, 0.7);
+      }
+    }
+
+    &.offline {
+      .status-dot {
+        background: #ff4d4f;
+        box-shadow: 0 0 0.8vh rgba(255, 77, 79, 0.65);
+      }
+    }
+  }
+
+  .marquee-box {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding-left: 1vw;
+
+    .marquee-text {
+      text-transform: uppercase;
+      white-space: nowrap;
+      padding-left: 100%;
+      animation: marquee 25s linear infinite;
+      opacity: 0.92;
+      font-size: 3.4vh;
+    }
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(-100%, 0);
+  }
+}

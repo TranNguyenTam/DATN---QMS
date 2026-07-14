@@ -1,0 +1,66 @@
+{
+  "model": "XGBRegressor",
+  "rho_ref": 0.85,
+  "queues": {
+    "Khám bệnh": {
+      "servers": 3,
+      "svc_min": 10.0,
+      "corr_model_vs_mmc": 0.88,
+      "mae_model_vs_mmc_min": 23.02,
+      "erlang_c_pwait_at_rho": 0.73,
+      "wq_steadystate_min_at_rho": 16.23
+    },
+    "Thanh toán viện phí": {
+      "servers": 2,
+      "svc_min": 4.0,
+      "corr_model_vs_mmc": 0.951,
+      "mae_model_vs_mmc_min": 9.19,
+      "erlang_c_pwait_at_rho": 0.781,
+      "wq_steadystate_min_at_rho": 10.41
+    },
+    "Phát thuốc BHYT": {
+      "servers": 2,
+      "svc_min": 5.0,
+      "corr_model_vs_mmc": 0.942,
+      "mae_model_vs_mmc_min": 15.11,
+      "erlang_c_pwait_at_rho": 0.781,
+      "wq_steadystate_min_at_rho": 13.02
+    },
+    "Lấy mẫu xét nghiệm": {
+      "servers": 2,
+      "svc_min": 3.0,
+      "corr_model_vs_mmc": 0.874,
+      "mae_model_vs_mmc_min": 5.44,
+      "erlang_c_pwait_at_rho": 0.781,
+      "wq_steadystate_min_at_rho": 7.81
+    },
+    "Siêu âm ổ bụng": {
+      "servers": 1,
+      "svc_min": 15.0,
+      "corr_model_vs_mmc": 0.376,
+      "mae_model_vs_mmc_min": 194.25,
+      "erlang_c_pwait_at_rho": 0.85,
+      "wq_steadystate_min_at_rho": 85.0
+    },
+    "X-Quang phổi": {
+      "servers": 1,
+      "svc_min": 8.0,
+      "corr_model_vs_mmc": 0.725,
+      "mae_model_vs_mmc_min": 93.2,
+      "erlang_c_pwait_at_rho": 0.85,
+      "wq_steadystate_min_at_rho": 45.33
+    },
+    "CT-Scanner": {
+      "servers": 1,
+      "svc_min": 20.0,
+      "corr_model_vs_mmc": 0.469,
+      "mae_model_vs_mmc_min": 272.35,
+      "erlang_c_pwait_at_rho": 0.85,
+      "wq_steadystate_min_at_rho": 113.33
+    }
+  },
+  "overall": {
+    "mean_corr": 0.745,
+    "mean_mae_min": 87.51
+  }
+}

@@ -1,0 +1,374 @@
+// src/pages/KioskPage.scss
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; // KHÔNG SCROLL
+  font-family: "Segoe UI", sans-serif;
+}
+
+.kiosk-layout {
+  width: 100vw;
+  height: 100vh;
+  background: #ffffff;
+}
+
+.kiosk-header {
+  height: 10vh;
+  background: #005da0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.kiosk-header-title {
+  color: #fff;
+  font-weight: 700;
+  font-size: 2.6vw;
+  letter-spacing: 0.06em;
+}
+
+.kiosk-content {
+  height: 90vh;
+  padding: 0;
+}
+
+.kiosk-main-row {
+  height: 100%;
+}
+
+/* LEFT PANEL */
+.kiosk-left {
+  background: #005da0;
+  height: 100%;
+  padding: 2vh 1.8vw;
+  color: #fff;
+}
+
+.kiosk-left-inner {
+  border: 3px solid #ffffff;
+  border-radius: 8px;
+  height: 100%;
+  padding: 2vh 1.5vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.kiosk-left-title {
+  font-size: 1.6vw;
+  font-weight: 700;
+  margin-bottom: 2vh;
+  text-align: center;
+}
+
+.kiosk-cccd-input {
+  font-size: 1.2vw;
+  height: 6vh;
+  margin-bottom: 2vh;
+
+  input {
+    font-size: 1.3vw;
+    height: 100%;
+  }
+}
+
+.kiosk-priority-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8vw;
+  margin-bottom: 2vh;
+
+  .ant-checkbox-wrapper {
+    font-size: 1.1vw;
+    color: #fff;
+  }
+
+  .kiosk-priority-select {
+    flex: 1;
+    height: 4vh;
+
+    .ant-select-selector {
+      height: 100% !important;
+      font-size: 1.1vw;
+      align-items: center;
+    }
+  }
+}
+
+.kiosk-queue-container {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 1.2vw;
+  padding-top: 1vh;
+}
+
+.queue-btn {
+  white-space: pre-line;
+  width: 100%;
+  height: 30vh;
+  font-size: 1.8vw;
+  font-weight: 700;
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+  background: #ffffff;
+  color: #005d6a;
+}
+
+.queue-btn.blink {
+  animation: blink-bg 1s infinite;
+}
+
+@keyframes blink-bg {
+  0% {
+    background: #ffffff;
+  }
+
+  50% {
+    background: #f1c100;
+  }
+
+  100% {
+    background: #ffffff;
+  }
+}
+
+.kiosk-scan-box {
+  margin-top: 1vh;
+  border-top: 3px solid #ffffff;
+  padding-top: 1.2vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  gap: 1vh;
+}
+
+.scan-text {
+  font-size: 1.2vw;
+  font-weight: 700;
+  text-align: center;
+}
+
+.scan-arrow {
+  width: 5vw;
+  height: 9vh;
+  background: #f1c100;
+  clip-path: polygon(50% 100%, 0 40%, 30% 40%, 30% 0, 70% 0, 70% 40%, 100% 40%);
+}
+
+/* RIGHT PANEL */
+.kiosk-right {
+  background: #ffffff;
+  height: 100%;
+  padding: 2vh 1.8vw;
+  position: relative;
+}
+
+.kiosk-right-inner {
+  border: 3px solid #005da0;
+  border-radius: 8px;
+  height: 100%;
+  /* padding-right rộng để bàn phím numeric (absolute, ~22vw) không che form. */
+  padding: 2vh 25vw 2vh 1.8vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  /* scrollbar gọn để không làm xấu layout */
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #c3d3e0;
+    border-radius: 4px;
+  }
+}
+
+/* ROWS */
+.kiosk-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.3vh;
+
+  &.align-start {
+    align-items: flex-start;
+  }
+
+  .kiosk-row-wrap {
+    margin-top: 3vh;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .kiosk-col-left {
+      .kiosk-priority-select {
+        flex: 1;
+        height: 4vh;
+      }
+    }
+  }
+}
+
+.kiosk-label {
+  width: 10vw;
+  font-size: 1.5vw;
+  font-weight: 700;
+  color: #005da0;
+
+  &.small {
+    margin-left: 14vw;
+    // width: 10vw;
+    text-align: center;
+  }
+}
+
+.kiosk-input {
+  flex: 1;
+  height: 6vh;
+  margin-right: 0.8vw;
+
+  input {
+    height: 100%;
+    font-size: 1.3vw;
+  }
+
+  &.short {
+    max-width: 12vw;
+  }
+}
+
+.kiosk-btn {
+  height: 6vh;
+  font-size: 1.2vw;
+  font-weight: 600;
+  margin-left: 0.5vw;
+  padding: 0 1.5vw;
+
+  &.danger {
+    background: #ff4d4f;
+    color: #fff;
+    border: none;
+  }
+
+  &.secondary {
+    background: #005da0;
+    color: #fff;
+    border: none;
+  }
+}
+
+.kiosk-textarea-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.kiosk-thongtuyen {
+  flex: 1;
+  min-height: 12vh;
+  max-height: 20vh;
+  border: 1px solid #bfbfbf;
+  border-radius: 4px;
+  padding: 0.8vh 0.8vw;
+  font-size: 1.2vw;
+  line-height: 1.5;
+  overflow-y: auto;
+  resize: none;
+}
+
+.kiosk-radio-group {
+  .ant-radio-wrapper {
+    font-size: 1.2vw;
+    margin-right: 1vw;
+  }
+}
+
+.kiosk-checkbox-lg {
+  font-size: 1.2vw;
+  margin-right: 1vw;
+}
+
+.kiosk-priority-select-right {
+  width: 13vw;
+  height: 6vh;
+
+  .ant-select-selector {
+    height: 100% !important;
+    align-items: center;
+    font-size: 1.1vw;
+  }
+}
+
+.kiosk-confirm-btn {
+  margin-left: auto;
+  height: 100%;
+  width: 12vw;
+  font-size: 1.5vw;
+  font-weight: 700;
+  background: #f1c100;
+  border: none;
+  color: #003a4d;
+}
+
+/* NUMERIC KEYBOARD — z-index thấp hơn AntD Modal/Drawer (>= 1000) để
+ * Modal hiện đè lên keyboard. Dùng position: sticky-like absolute
+ * trong khung kiosk-right có position: relative.
+ */
+.kiosk-keyboard {
+  position: absolute;
+  top: 5vh;
+  right: 3vw;
+  width: 22vw;
+  padding: 1.2vh 1vw;
+  border-radius: 8px;
+  background: #305679;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+  z-index: 5;
+}
+
+.kiosk-keyboard-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.8vh;
+}
+
+.kiosk-key {
+  flex: 1;
+  margin: 0 0.2vw;
+  height: 6.5vh;
+  font-size: 1.6vw;
+  font-weight: 700;
+
+  &.enter {
+    flex: 2;
+  }
+
+  &.danger {
+    background: #ff4d4f;
+    color: #fff;
+    border: none;
+  }
+}
+
+/* MODAL */
+.kiosk-modal {
+  .ant-modal-body {
+    text-align: center;
+    padding: 2vw;
+  }
+}
+
+.kiosk-modal-text {
+  font-size: 1.4vw;
+  font-weight: 600;
+}

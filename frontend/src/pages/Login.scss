@@ -1,0 +1,267 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+// Variables
+$primary: #1677ff;
+$primary-dark: #0958d9;
+$primary-light: #e6f4ff;
+$white: #ffffff;
+$text-dark: #1a1a2e;
+$text-secondary: #64748b;
+$border-radius: 16px;
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+  font-family: "Inter", sans-serif;
+  position: relative;
+  overflow: hidden;
+  padding: 16px;
+
+  // Decorative blurred circles
+  .bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.12;
+    filter: blur(60px);
+    pointer-events: none;
+
+    &--1 {
+      width: 500px;
+      height: 500px;
+      background: #1677ff;
+      top: -150px;
+      left: -100px;
+    }
+
+    &--2 {
+      width: 400px;
+      height: 400px;
+      background: #52c41a;
+      bottom: -100px;
+      right: -80px;
+    }
+
+    &--3 {
+      width: 300px;
+      height: 300px;
+      background: #722ed1;
+      top: 40%;
+      left: 40%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  // Main card container
+  .login-container {
+    display: flex;
+    width: 100%;
+    max-width: 900px;
+    min-height: 520px;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+      0 32px 64px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+
+    @media (max-width: 640px) {
+      flex-direction: column;
+      max-width: 440px;
+      min-height: auto;
+    }
+  }
+
+  // LEFT PANEL - Branding
+  .login-brand {
+    flex: 1;
+    padding: 48px 40px;
+    background: linear-gradient(
+      160deg,
+      rgba(22, 119, 255, 0.3) 0%,
+      rgba(22, 119, 255, 0.08) 100%
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+
+    @media (max-width: 640px) {
+      padding: 32px 32px 24px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .brand-logo {
+      width: 72px;
+      height: 72px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, $primary, $primary-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 24px rgba(22, 119, 255, 0.4);
+
+      .anticon {
+        font-size: 36px;
+        color: $white;
+      }
+    }
+
+    .brand-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: $white;
+      margin: 0 0 8px;
+      line-height: 1.2;
+    }
+
+    .brand-subtitle {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.65);
+      margin: 0 0 32px;
+      line-height: 1.6;
+    }
+
+    .brand-features {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      @media (max-width: 640px) {
+        display: none;
+      }
+
+      .feature-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 14px;
+
+        .feature-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #52c41a;
+          flex-shrink: 0;
+          box-shadow: 0 0 6px rgba(82, 196, 26, 0.6);
+        }
+      }
+    }
+  }
+
+  // RIGHT PANEL - Form
+  .login-form-panel {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 40px;
+    background: $white;
+
+    @media (max-width: 640px) {
+      padding: 32px;
+    }
+
+    .login-form-inner {
+      width: 100%;
+      max-width: 340px;
+    }
+
+    .form-header {
+      margin-bottom: 32px;
+
+      .form-title {
+        font-size: 26px !important;
+        font-weight: 700 !important;
+        color: $text-dark !important;
+        margin: 0 0 6px !important;
+      }
+
+      .form-subtitle {
+        font-size: 14px;
+        color: $text-secondary;
+      }
+    }
+
+    // Ant Form overrides
+    .ant-form-item-label > label {
+      font-weight: 500;
+      color: #374151;
+      font-size: 14px;
+    }
+
+    .ant-input-affix-wrapper {
+      border-radius: 10px;
+      border-color: #e2e8f0;
+      background: #f8fafc;
+      transition: all 0.2s;
+      padding: 10px 14px;
+
+      &:hover {
+        border-color: $primary;
+        background: $white;
+      }
+
+      &:focus-within {
+        border-color: $primary;
+        box-shadow: 0 0 0 3px rgba(22, 119, 255, 0.1);
+        background: $white;
+      }
+
+      .input-icon {
+        color: #94a3b8;
+        font-size: 16px;
+        margin-right: 4px;
+      }
+
+      input {
+        background: transparent;
+        font-size: 15px;
+
+        &::placeholder {
+          color: #94a3b8;
+        }
+      }
+    }
+
+    .login-btn {
+      height: 48px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      background: linear-gradient(135deg, $primary, $primary-dark);
+      border: none;
+      box-shadow: 0 4px 16px rgba(22, 119, 255, 0.35);
+      transition: all 0.2s;
+      letter-spacing: 0.3px;
+
+      &:hover {
+        background: linear-gradient(135deg, #2a8eff, $primary);
+        box-shadow: 0 6px 20px rgba(22, 119, 255, 0.45);
+        transform: translateY(-1px);
+      }
+
+      &:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 8px rgba(22, 119, 255, 0.3);
+      }
+    }
+
+    .form-footer {
+      margin-top: 24px;
+      text-align: center;
+      padding-top: 16px;
+      border-top: 1px solid #f1f5f9;
+    }
+  }
+}

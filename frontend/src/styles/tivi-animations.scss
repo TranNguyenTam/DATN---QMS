@@ -1,0 +1,60 @@
+// ============================================================
+// tivi-animations.scss — keyframes & class dùng chung cho mọi
+// trang Tivi (Tiếp nhận, Khám bệnh, CLS, CDHA, Viện phí, Nhà thuốc).
+// Import trong file SCSS của từng module để áp dụng nhất quán.
+// ============================================================
+
+@keyframes tivi-stt-pulse {
+  0%, 100% {
+    text-shadow: 0 0.3vh 1.5vh rgba(232, 93, 4, 0.25);
+    transform: scale(1);
+  }
+  50% {
+    text-shadow: 0 0.3vh 3vh rgba(232, 93, 4, 0.45);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes tivi-stt-pulse-blue {
+  0%, 100% {
+    text-shadow: 0 0.3vh 1.5vh rgba(22, 119, 255, 0.25);
+    transform: scale(1);
+  }
+  50% {
+    text-shadow: 0 0.3vh 3vh rgba(22, 119, 255, 0.45);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes tivi-stt-pulse-green {
+  0%, 100% {
+    text-shadow: 0 0.3vh 1.5vh rgba(56, 158, 13, 0.25);
+    transform: scale(1);
+  }
+  50% {
+    text-shadow: 0 0.3vh 3vh rgba(56, 158, 13, 0.45);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes tivi-card-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Mixin tiện dụng cho từng Tivi page.
+@mixin tivi-stt-orange {
+  animation: tivi-stt-pulse 2s ease-in-out infinite;
+}
+@mixin tivi-stt-blue {
+  animation: tivi-stt-pulse-blue 2s ease-in-out infinite;
+}
+@mixin tivi-stt-green {
+  animation: tivi-stt-pulse-green 2s ease-in-out infinite;
+}

@@ -1,0 +1,26 @@
+.nhathuoc-goi-benh-wrapper {
+  height: calc(100vh - 64px);
+  padding: 12px;
+  background:
+    radial-gradient(circle at 10% 10%, #e9f7ef 0, #e9f7ef 22%, transparent 23%),
+    radial-gradient(circle at 90% 20%, #e6f4ff 0, #e6f4ff 20%, transparent 21%),
+    #f8faf8;
+
+  .left-panel-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .module-banner {  
+    border: 1px solid #b7eb8f;
+    background: linear-gradient(90deg, #f6ffed 0%, #ecfdf3 100%);
+  }
+}

@@ -1,0 +1,70 @@
+// ============================================================================
+// QMS Design System — design tokens (SCSS $ vars + CSS variables).
+// Mirrors src/config/antdTheme.js. Dùng trong .scss qua `@use "tokens";`
+// hoặc bất cứ đâu qua `var(--color-primary)`. UI/UX only.
+// ============================================================================
+
+$primary: #1677ff;
+$primary-hover: #2a8eff;
+$secondary: #003a8c;
+$success: #52c41a;
+$warning: #faad14;
+$error: #ff4d4f;
+$info: #1677ff;
+$bg: #f0f4f8;
+$surface: #ffffff;
+$surface-alt: #f8fafc;
+$bg-info: #e6f4ff;
+$border: #e2e8f0;
+$border-strong: #cbd5e1;
+$text-primary: #1a2332;
+$text-secondary: #475569;
+$text-muted: #94a3b8;
+$accent-orange: #e85d04;
+
+$radius-sm: 6px;
+$radius-md: 8px;
+$radius-lg: 10px;
+$radius-xl: 14px;
+
+$shadow-1: 0 1px 4px rgba(0, 0, 0, 0.05);
+$shadow-2: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+$space-1: 4px;
+$space-2: 8px;
+$space-3: 12px;
+$space-4: 16px;
+$space-6: 24px;
+$space-8: 32px;
+
+:root {
+  --color-primary: #{$primary};
+  --color-primary-hover: #{$primary-hover};
+  --color-secondary: #{$secondary};
+  --color-success: #{$success};
+  --color-warning: #{$warning};
+  --color-error: #{$error};
+  --color-info: #{$info};
+  --color-bg: #{$bg};
+  --color-surface: #{$surface};
+  --color-surface-alt: #{$surface-alt};
+  --color-bg-info: #{$bg-info};
+  --color-border: #{$border};
+  --color-border-strong: #{$border-strong};
+  --color-text: #{$text-primary};
+  --color-text-secondary: #{$text-secondary};
+  --color-text-muted: #{$text-muted};
+  --color-accent-orange: #{$accent-orange};
+  --radius-sm: #{$radius-sm};
+  --radius-md: #{$radius-md};
+  --radius-lg: #{$radius-lg};
+  --radius-xl: #{$radius-xl};
+  --shadow-1: #{$shadow-1};
+  --shadow-2: #{$shadow-2};
+  --space-1: #{$space-1};
+  --space-2: #{$space-2};
+  --space-3: #{$space-3};
+  --space-4: #{$space-4};
+  --space-6: #{$space-6};
+  --space-8: #{$space-8};
+}

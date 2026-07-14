@@ -1,0 +1,13 @@
+# Loose pin để hỗ trợ Python 3.13 (numpy 1.x không có wheel cho py313;
+# nâng lên 2.x kéo theo tf-keras 2.18+. Giữ === cho fastapi/uvicorn để ổn định API).
+fastapi==0.115.0
+uvicorn[standard]==0.32.0
+python-multipart==0.0.12
+deepface>=0.0.93
+tf-keras>=2.17.0
+opencv-python-headless>=4.10.0.84
+numpy>=1.26.4
+pydantic>=2.9.2
+# HEIC support cho ảnh iPhone — fallback trong _decode khi cv2.imdecode fail.
+pillow>=10.4.0
+pillow-heif>=0.18.0

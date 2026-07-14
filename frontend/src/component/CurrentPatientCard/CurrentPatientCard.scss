@@ -1,0 +1,89 @@
+.call-card {
+  background: linear-gradient(145deg, #ffffff, #f0f7ff) !important;
+  border: 1px solid #bae0ff !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 20px rgba(22, 119, 255, 0.1) !important;
+  overflow: hidden;
+  flex-shrink: 0; // không co trong flex column → tránh bị cắt mất nút gọi
+
+  // Accent strip at top
+  &::before {
+    content: "";
+    display: block;
+    height: 3px;
+    background: linear-gradient(90deg, #1677ff, #69b1ff);
+    margin: -12px -12px 12px;
+  }
+
+  .call-display {
+    text-align: center;
+
+    .calling-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      color: #1677ff;
+      background: #e6f4ff;
+      border: 1px solid #91caff;
+      padding: 2px 10px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .current-stt {
+      font-size: 62px;
+      font-weight: 800;
+      color: #1677ff;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      text-shadow: 0 2px 8px rgba(22, 119, 255, 0.2);
+      animation: stt-pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes stt-pulse {
+      0%,
+      100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.04);
+      }
+    }
+
+    .current-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 16px;
+      min-height: 24px;
+      padding: 0 8px;
+    }
+
+    .btn-call-big {
+      height: 48px;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: 10px;
+      letter-spacing: 0.3px;
+      background: linear-gradient(135deg, #1677ff, #0958d9);
+      border: none;
+      box-shadow: 0 4px 12px rgba(22, 119, 255, 0.4);
+      transition: all 0.2s;
+
+      &:hover {
+        background: linear-gradient(135deg, #2a8eff, #1677ff);
+        box-shadow: 0 6px 18px rgba(22, 119, 255, 0.5);
+        transform: translateY(-1px);
+      }
+
+      &:active {
+        box-shadow: 0 2px 6px rgba(22, 119, 255, 0.3);
+        transform: translateY(1px);
+      }
+    }
+  }
+}

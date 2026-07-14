@@ -1,0 +1,127 @@
+.tivi-left-panel {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3vh 2vw 2vh;
+  box-sizing: border-box;
+  background: linear-gradient(160deg, #0d1b2e 0%, #002d6e 100%);
+  position: relative;
+  overflow: hidden;
+  font-family: "Inter", sans-serif;
+
+  // Decorative glow circles
+  &::before {
+    content: "";
+    position: absolute;
+    top: -8vh;
+    left: -6vw;
+    width: 35vh;
+    height: 35vh;
+    background: radial-gradient(
+      circle,
+      rgba(22, 119, 255, 0.18) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 8vh;
+    right: -4vw;
+    width: 25vh;
+    height: 25vh;
+    background: radial-gradient(
+      circle,
+      rgba(22, 119, 255, 0.12) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+
+  .header-section {
+    text-align: center;
+    margin-bottom: 1.5vh;
+    color: white;
+    position: relative;
+    z-index: 1;
+
+    .logo-box {
+      width: 13vh;
+      height: 13vh;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5vh;
+      overflow: hidden;
+      box-shadow:
+        0 0 0 0.5vh rgba(255, 255, 255, 0.15),
+        0 0 0 1vh rgba(22, 119, 255, 0.2),
+        0 0.8vh 2.5vh rgba(0, 0, 0, 0.4);
+
+      img {
+        width: 85%;
+        height: 85%;
+        object-fit: contain;
+      }
+    }
+
+    h3 {
+      font-size: 1.9vh;
+      margin: 0;
+      opacity: 0.75;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: 3.2vh;
+      margin: 0.4vh 0 0;
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 1.25;
+      letter-spacing: 0.04em;
+    }
+
+    // Divider after hospital name
+    &::after {
+      content: "";
+      display: block;
+      width: 60%;
+      height: 2px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.5),
+        transparent
+      );
+      margin: 1.5vh auto 0;
+    }
+  }
+
+  .video-section {
+    flex: 1;
+    width: 100%;
+    border-radius: 1.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    box-shadow:
+      0 0 0 2px rgba(255, 255, 255, 0.12),
+      0 0.8vh 3vh rgba(0, 0, 0, 0.5);
+
+    .video-content {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}

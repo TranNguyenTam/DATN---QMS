@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.2" />
+    <PackageReference Include="Scalar.AspNetCore" Version="2.5.17" />
+    <PackageReference Include="WebPush" Version="1.0.13" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Qms.Core\Qms.Core.csproj" />
+    <ProjectReference Include="..\Qms.Services\Qms.Services.csproj" />
+    <ProjectReference Include="..\Qms.Infrastructure\Qms.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
